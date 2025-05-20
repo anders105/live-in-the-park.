@@ -71,6 +71,10 @@
         font-size: 16px;
         color: #a421fc;
       }
+      h3 {
+        font-size: 36px;
+        color: #2591e9;
+      }
       h1,
       h2,
       h3,
@@ -84,11 +88,144 @@
         background-repeat: no-repeat;
         background-attachment: fixed;
       }
+
+      /* From Uiverse.io by Admin12121 */
+      .menu {
+        padding: 0.5rem;
+        background-color: #fff;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        border-radius: 15px;
+        box-shadow: 0 10px 25px 0 rgba(#000, 0.075);
+      }
+
+      .link {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        width: 70px;
+        height: 50px;
+        border-radius: 8px;
+        position: relative;
+        z-index: 1;
+        overflow: hidden;
+        transform-origin: center left;
+        transition: width 0.2s ease-in;
+        text-decoration: none;
+        color: inherit;
+        &:before {
+          position: absolute;
+          z-index: -1;
+          content: "";
+          display: block;
+          border-radius: 8px;
+          width: 100%;
+          height: 100%;
+          top: 0;
+          transform: translateX(100%);
+          transition: transform 0.2s ease-in;
+          transform-origin: center right;
+          background-color: #eee;
+        }
+
+        &:hover,
+        &:focus {
+          outline: 0;
+          width: 130px;
+
+          &:before,
+          .link-title {
+            transform: translateX(0);
+            opacity: 1;
+          }
+        }
+      }
+
+      .link-icon {
+        width: 28px;
+        height: 28px;
+        display: block;
+        flex-shrink: 0;
+        left: 18px;
+        position: absolute;
+        svg {
+          width: 28px;
+          height: 28px;
+        }
+      }
+
+      .link-title {
+        transform: translateX(100%);
+        transition: transform 0.2s ease-in;
+        transform-origin: center right;
+        display: block;
+        text-align: center;
+        text-indent: 28px;
+        width: 100%;
+      }
+      /* From Uiverse.io by vinodjangid07 */
+      .button {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background-color: rgb(20, 20, 20);
+        border: none;
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0px 0px 0px 4px rgba(180, 160, 255, 0.253);
+        cursor: pointer;
+        transition-duration: 0.3s;
+        overflow: hidden;
+        position: relative;
+      }
+
+      .svgIcon {
+        width: 12px;
+        transition-duration: 0.3s;
+      }
+
+      .svgIcon path {
+        fill: white;
+      }
+
+      .button:hover {
+        width: 140px;
+        border-radius: 50px;
+        transition-duration: 0.3s;
+        background-color: rgb(181, 160, 255);
+        align-items: center;
+      }
+
+      .button:hover .svgIcon {
+        /* width: 20px; */
+        transition-duration: 0.3s;
+        transform: translateY(-200%);
+      }
+
+      .button::before {
+        position: absolute;
+        bottom: -20px;
+        content: "Back to Top";
+        color: white;
+        /* transition-duration: .3s; */
+        font-size: 0px;
+      }
+
+      .button:hover::before {
+        font-size: 13px;
+        opacity: 1;
+        bottom: unset;
+        /* transform: translateY(-30px); */
+        transition-duration: 0.3s;
+      }
       /* From Uiverse.io by MrBishtji */
       #SocailIcons {
         min-width: 350px;
         position: absolute;
-        bottom: -60%;
+        bottom: -85%;
         left: 50%;
         transform: translate(-50%, -50%);
         display: flex;
@@ -195,6 +332,41 @@
         z-index: -1;
         background: #25d366;
       }
+      /* From Uiverse.io by akshat-patel28 */
+      .button-container {
+        display: flex;
+        background-color: rgb(27, 133, 219);
+        width: 250px;
+        height: 40px;
+        align-items: center;
+        justify-content: space-around;
+        border-radius: 10px;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px,
+          rgba(27, 133, 219, 0.5) 5px 10px 15px;
+      }
+
+      .button {
+        outline: 0 !important;
+        border: 0 !important;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: transparent;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+        transition: all ease-in-out 0.3s;
+        cursor: pointer;
+      }
+
+      .button:hover {
+        transform: translateY(-3px);
+      }
+
+      .icon {
+        font-size: 20px;
+      }
     </style>
     <!DOCTYPE html>
     <html lang="en">
@@ -222,122 +394,6 @@
 
           #particles-br {
             right: 0;
-          }
-          /* From Uiverse.io by MrBishtji */
-          #SocailIcons {
-            min-width: 350px;
-            position: absolute;
-            bottom: -90%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            display: flex;
-            justify-content: space-around;
-          }
-          .icons {
-            width: 50px;
-            height: 50px;
-            background: #fff;
-            border-radius: 50%;
-            cursor: pointer;
-            outline: none;
-            border: none;
-            z-index: -1;
-            text-align: center;
-          }
-          .iconName {
-            position: absolute;
-            top: -40px;
-            font-size: 12px;
-            color: #fff;
-            transform: scale(0);
-            border-radius: 3px;
-            text-align: center;
-            padding: 3px;
-            transition: transform 0.3s ease;
-          }
-
-          .icons.instaIcon:hover .iconName {
-            transform: scale(1);
-            left: 15px;
-            background: linear-gradient(30deg, #0000ff, #f56040);
-          }
-
-          .icons.linkedin:hover .iconName {
-            transform: scale(1);
-            left: 106px;
-            background: #0274b3;
-          }
-          .icons.whatsapp:hover .iconName {
-            transform: scale(1);
-            right: 100px;
-            background: #25d366;
-          }
-          .icons.youtube:hover .iconName {
-            transform: scale(1);
-            right: 15px;
-            background: #ff0000;
-          }
-          .icon {
-            z-index: 1;
-            display: inline-block;
-            width: 100%;
-            height: 100%;
-            text-align: center;
-            border-radius: 50%;
-            position: relative;
-            overflow: hidden;
-            border: none;
-            outline: none;
-            transition: color 0.3s ease;
-            color: #0c0c0c;
-          }
-          .icon:hover {
-            color: #fff;
-          }
-          .icon::before {
-            content: "";
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 0;
-            border-radius: 50%;
-            transform: rotateX(360deg);
-            transition: height 0.3s ease;
-            z-index: -1;
-          }
-
-          .icon:hover::before {
-            height: 100%;
-            z-index: 1;
-          }
-          .icon:hover {
-            box-shadow: 5px 5px 10px #181717ce;
-          }
-
-          .icon.tube::before {
-            z-index: -1;
-            background: red;
-          }
-
-          .icon.insta::before {
-            z-index: -1;
-            background: linear-gradient(40deg, #0000ff, #f56040);
-          }
-
-          .icon.link::before {
-            z-index: -1;
-            background: #0274b3;
-          }
-
-          .icon.whats::before {
-            z-index: -1;
-            background: #25d366;
-          }
-
-          h3 {
-            font-size: 36px;
-            color: #2591e9;
           }
 
           footer {
@@ -374,71 +430,191 @@
             </video>
           </td>
         </tr>
+        <td width="1752" height="50" colspan="4" align="center">
+          <div class="menu">
+            <a href="index.html" class="link">
+              <span class="link-icon">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="192"
+                  height="192"
+                  fill="currentColor"
+                  viewBox="0 0 256 256"
+                >
+                  <rect width="256" height="256" fill="none"></rect>
+                  <path
+                    d="M213.3815,109.61945,133.376,36.88436a8,8,0,0,0-10.76339.00036l-79.9945,72.73477A8,8,0,0,0,40,115.53855V208a8,8,0,0,0,8,8H208a8,8,0,0,0,8-8V115.53887A8,8,0,0,0,213.3815,109.61945Z"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="16"
+                  ></path>
+                </svg>
+              </span>
+              <span class="link-title">Home</span>
+            </a>
+            <a href="artists.html" class="link">
+              <span class="link-icon">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="192"
+                  height="192"
+                  fill="currentColor"
+                  viewBox="0 0 256 256"
+                >
+                  <rect width="256" height="256" fill="none"></rect>
+                  <polyline
+                    points="76.201 132.201 152.201 40.201 216 40 215.799 103.799 123.799 179.799"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="16"
+                  ></polyline>
+                  <line
+                    x1="100"
+                    y1="156"
+                    x2="160"
+                    y2="96"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="16"
+                  ></line>
+                  <path
+                    d="M82.14214,197.45584,52.201,227.397a8,8,0,0,1-11.31371,0L28.603,215.11268a8,8,0,0,1,0-11.31371l29.94113-29.94112a8,8,0,0,0,0-11.31371L37.65685,141.65685a8,8,0,0,1,0-11.3137l12.6863-12.6863a8,8,0,0,1,11.3137,0l76.6863,76.6863a8,8,0,0,1,0,11.3137l-12.6863,12.6863a8,8,0,0,1-11.3137,0L93.45584,197.45584A8,8,0,0,0,82.14214,197.45584Z"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="16"
+                  ></path>
+                </svg>
+              </span>
+              <span class="link-title">artists</span>
+            </a>
+            <a href="tickets.html" class="link">
+              <span class="link-icon">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="192"
+                  height="192"
+                  fill="currentColor"
+                  viewBox="0 0 256 256"
+                >
+                  <rect width="256" height="256" fill="none"></rect>
+                  <path
+                    d="M45.42853,176.99811A95.95978,95.95978,0,1,1,79.00228,210.5717l.00023-.001L45.84594,220.044a8,8,0,0,1-9.89-9.89l9.47331-33.15657Z"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="16"
+                  ></path>
+                  <line
+                    x1="96"
+                    y1="112"
+                    x2="160"
+                    y2="112"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="16"
+                  ></line>
+                  <line
+                    x1="96"
+                    y1="144"
+                    x2="160"
+                    y2="144"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="16"
+                  ></line>
+                </svg>
+              </span>
+              <span class="link-title">ticket</span>
+            </a>
+
+            <a href="tickets imformation.html" class="link">
+              <span class="link-icon">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="192"
+                  height="192"
+                  fill="currentColor"
+                  viewBox="0 0 256 256"
+                >
+                  <rect width="256" height="256" fill="none"></rect>
+                  <circle
+                    cx="116"
+                    cy="116"
+                    r="84"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="16"
+                  ></circle>
+                  <line
+                    x1="175.39356"
+                    y1="175.40039"
+                    x2="223.99414"
+                    y2="224.00098"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="16"
+                  ></line>
+                </svg>
+              </span>
+              <span class="link-title">information</span>
+            </a>
+            <a href="contact.html" class="link">
+              <span class="link-icon">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="192"
+                  height="192"
+                  fill="currentColor"
+                  viewBox="0 0 256 256"
+                >
+                  <rect width="256" height="256" fill="none"></rect>
+                  <circle
+                    cx="128"
+                    cy="96"
+                    r="64"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-miterlimit="10"
+                    stroke-width="16"
+                  ></circle>
+                  <path
+                    d="M30.989,215.99064a112.03731,112.03731,0,0,1,194.02311.002"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="16"
+                  ></path>
+                </svg>
+              </span>
+              <span class="link-title">contacts</span>
+            </a>
+          </div>
+        </td>
         <tr>
-          <td height="94" colspan="3">
-            <a
-              href="Index.html"
-              onMouseOut="MM_swapImgRestore()"
-              onMouseOver="MM_swapImage('Image2','','home1.png',1)"
-              ><img
-                src="home.png"
-                alt=""
-                width="238"
-                height="89"
-                id="Image2"
-              /> </a
-            ><a
-              href="artists.html"
-              onMouseOut="MM_swapImgRestore()"
-              onMouseOver="MM_swapImage('Image3','','Artists1.png',1)"
-              ><img
-                src="Artists.png"
-                alt=""
-                width="238"
-                height="89"
-                id="Image3"
-              /> </a
-            ><a
-              href="tickets.html"
-              onMouseOut="MM_swapImgRestore()"
-              onMouseOver="MM_swapImage('Image4','','tickets1.png',1)"
-              ><img
-                src="tickets.png"
-                alt=""
-                width="238"
-                height="89"
-                id="Image4"
-              /> </a
-            ><a
-              href="tickets imformation.html"
-              onMouseOut="MM_swapImgRestore()"
-              onMouseOver="MM_swapImage('Image','','information1.png',1)"
-              ><img
-                src="information.png"
-                alt=""
-                width="238"
-                height="89"
-                id="Image" /></a
-            ><a
-              href="contact.html"
-              onMouseOut="MM_swapImgRestore()"
-              onMouseOver="MM_swapImage('Image5','','contacts1.png',1)"
-              ><img
-                src="contacts.png"
-                alt=""
-                width="238"
-                height="89"
-                id="Image5"
-            /></a>
-          </td>
-        </tr>
-        <tr>
-          <td height="58" colspan="3" valign="top">
+          <td height="10" colspan="3" valign="top">
             <h1>Ticket Information</h1>
           </td>
         </tr>
         <tr>
-          <td height="32" colspan="3" valign="top">
+          <td height="10" colspan="3" valign="top">
             <marquee>
               <h3>
                 !Please read this carefully, before you buy our ticket!
@@ -596,11 +772,22 @@
         This work is protected by copyright law. No part may be reproduced,
         distributed, or modified without permission.
       </h4>
-      <p>
-        <a href="#top" style="color: white; text-decoration: underline"
-          >Return to top</a
-        >
-      </p>
+      <button class="button">
+        <svg class="svgIcon" viewBox="0 0 384 512">
+          <path
+            d="M214.6 41.4c-12.5-12.5-32.8-12.5-45.3 0l-160 160c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 141.2V448c0 17.7 14.3 32 32 32s32-14.3 32-32V141.2L329.4 246.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-160-160z"
+          ></path>
+        </svg>
+      </button>
+      <script>
+        const button = document.querySelector(".button");
+        button.addEventListener("click", () => {
+          window.scrollTo({
+            top: 0,
+            behavior: "smooth",
+          });
+        });
+      </script>
     </footer>
   </body>
 </html>
