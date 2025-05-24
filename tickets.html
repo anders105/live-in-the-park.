@@ -92,7 +92,7 @@ body {
   transition: width 0.2s ease-in;
   text-decoration: none;
   color: inherit;
-  &:before {
+    before {
     position: absolute;
     z-index: -1;
     content: "";
@@ -163,10 +163,6 @@ body {
   transition: 0.3s;
 }
 
-.facebook { background: #3b5998; }
-.twitter  { background: #1da1f2; }
-.instagram { background: #e1306c; }
-
 .icon:hover {
   transform: scale(1.2);
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
@@ -178,12 +174,17 @@ h3 {
 /* From Uiverse.io by MrBishtji */
       #SocailIcons {
         min-width: 350px;
-        position: absolute;
-        bottom: -80%;
-        left: 50%;
-        transform: translate(-50%, -50%);
+        position: relative; /* 修正为相对定位，避免遮挡内容 */
+        margin: 30px auto 0 auto;
+        left: unset;
+        bottom: unset;
+        transform: none;
         display: flex;
-        justify-content: space-around;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        z-index: 1;
+        gap: 30px; /* 图标间距 */
       }
       .icons {
         width: 50px;
@@ -193,40 +194,43 @@ h3 {
         cursor: pointer;
         outline: none;
         border: none;
-        z-index: -1;
+        z-index: 1;
         text-align: center;
+        position: relative;
+        margin: 0 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
       }
       .iconName {
         position: absolute;
         top: -40px;
+        left: 50%;
+        transform: translateX(-50%) scale(0);
         font-size: 12px;
         color: #fff;
-        transform: scale(0);
         border-radius: 3px;
         text-align: center;
-        padding: 3px;
-        transition: transform 0.3s ease;
+        padding: 3px 8px;
+        background: #333;
+        transition: transform 0.3s ease, background 0.3s;
+        white-space: nowrap;
+        pointer-events: none;
+        z-index: 2;
       }
-
+      .icons:hover .iconName {
+        transform: translateX(-50%) scale(1);
+      }
       .icons.instaIcon:hover .iconName {
-        transform: scale(1);
-        left: 15px;
         background: linear-gradient(30deg, #0000ff, #f56040);
       }
-
       .icons.linkedin:hover .iconName {
-        transform: scale(1);
-        left: 106px;
         background: #0274b3;
       }
       .icons.whatsapp:hover .iconName {
-        transform: scale(1);
-        right: 100px;
         background: #25d366;
       }
       .icons.youtube:hover .iconName {
-        transform: scale(1);
-        right: 15px;
         background: #ff0000;
       }
       .icon {
@@ -245,6 +249,7 @@ h3 {
       }
       .icon:hover {
         color: #fff;
+        box-shadow: 5px 5px 10px #181717ce;
       }
       .icon::before {
         content: "";
@@ -263,34 +268,69 @@ h3 {
         height: 100%;
         z-index: 1;
       }
-      .icon:hover {
-        box-shadow: 5px 5px 10px #181717ce;
-      }
-
       .icon.tube::before {
-        z-index: -1;
         background: red;
       }
 
       .icon.insta::before {
-        z-index: -1;
         background: linear-gradient(40deg, #0000ff, #f56040);
       }
 
       .icon.link::before {
-        z-index: -1;
         background: #0274b3;
       }
 
       .icon.whats::before {
-        z-index: -1;
         background: #25d366;
       }
-/* From Uiverse.io by pajenri */ 
+/* From Uiverse.io by pajenri */
+#container {
+        max-width: 2000px;
+        width: 100%;
+        margin: auto;
+        padding: 20px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 10px;
+      }
+
+      .contact-container {
+        background-color: rgba(255, 255, 255, 0.1);
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+      }
+
+      .contact-container h2 {
+        text-align: center;
+        color: #5e5d5d41;
+      }
+
+      .input-container {
+        display: flex;
+        flex-direction: column-reverse;
+        margin-top: 15px;
+      }
+
+      .input-container label {
+        color: #ccc;
+        margin-bottom: 5px;
+      }
+
+      .input-container input {
+        padding: 10px;
+        border: 2px solid #a142f9;
+        border-radius: 5px;
+        background: #ffffff85;
+      }
+
+      .input-container input:focus {
+        outline: none;
+        border-color: #d89bff;
+      }
 /*Neo Brutalism pricing card*/
 .card {
   width: 250px;
-  background: #fdfdfd;
+  background: #fdfdfd6c;
   padding: 1rem;
   border-radius: 1rem;
   border: 0.5vmin solid #05060f;
@@ -357,251 +397,309 @@ h3 {
       margin: 10px 0;
     }
     /* From Uiverse.io by vinodjangid07 */ 
-.button {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  background-color: rgb(20, 20, 20);
-  border: none;
-  font-weight: 600;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0px 0px 0px 4px rgba(180, 160, 255, 0.253);
-  cursor: pointer;
-  transition-duration: 0.3s;
-  overflow: hidden;
-  position: relative;
-}
+ .button {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background-color: rgb(20, 20, 20);
+        border: none;
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0px 0px 0px 4px rgba(180, 160, 255, 0.253);
+        cursor: pointer;
+        transition-duration: 0.3s;
+        overflow: hidden;
+        position: relative;
+        margin: 0 auto;
+      }
 
-.svgIcon {
-  width: 12px;
-  transition-duration: 0.3s;
-}
+      .svgIcon {
+        width: 12px;
+        transition-duration: 0.3s;
+      }
 
-.svgIcon path {
-  fill: white;
-}
+      .svgIcon path {
+        fill: white;
+      }
 
-.button:hover {
-  width: 140px;
-  border-radius: 50px;
-  transition-duration: 0.3s;
-  background-color: rgb(181, 160, 255);
-  align-items: center;
-}
+      .button:hover {
+        width: 140px;
+        border-radius: 50px;
+        transition-duration: 0.3s;
+        background-color: rgb(181, 160, 255);
+        align-items: center;
+      }
 
-.button:hover .svgIcon {
-  /* width: 20px; */
-  transition-duration: 0.3s;
-  transform: translateY(-200%);
-}
+      .button:hover .svgIcon {
+        /* width: 20px; */
+        transition-duration: 0.3s;
+        transform: translateY(-200%);
+      }
 
-.button::before {
-  position: absolute;
-  bottom: -20px;
-  content: "Back to Top";
-  color: white;
-  /* transition-duration: .3s; */
-  font-size: 0px;
-}
+      .button::before {
+        position: absolute;
+        bottom: -20px;
+        content: "Back to Top";
+        color: white;
+        /* transition-duration: .3s; */
+        font-size: 0px;
+      }
 
-.button:hover::before {
-  font-size: 13px;
-  opacity: 1;
-  bottom: unset;
-  /* transform: translateY(-30px); */
-  transition-duration: 0.3s;
-}
+      .button:hover::before {
+        font-size: 13px;
+        opacity: 1;
+        bottom: unset;
+        /* transform: translateY(-30px); */
+        transition-duration: 0.3s;
+      }
+
+      h3 {
+        font-size: 36px;
+        color: #2591e9;
+      }
+      .container {
+        max-width: 2000px;
+        width: 90%;
+        margin: auto;
+        padding: 20px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 10px;
+      }
+
+      .contact-container {
+        background-color: rgba(255, 255, 255, 0.1);
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+      }
+
+      .contact-container h2 {
+        text-align: center;
+        color: #fff;
+      }
+
+      .input-container {
+        display: flex;
+        flex-direction: column-reverse;
+        margin-top: 15px;
+      }
+
+      .input-container label {
+        color: #ccc;
+        margin-bottom: 5px;
+      }
+
+      .input-container input {
+        padding: 10px;
+        border: 2px solid #a142f9;
+        border-radius: 5px;
+        background: #fff;
+      }
+
+      .input-container input:focus {
+        outline: none;
+        border-color: #d89bff;
+      }
 
 </style>
 </head>
 
 <body onLoad="MM_preloadImages('home1.png','Artists1.png','tickets1.png','contacts1.png','information1.png')">
-<table width="1644" height="1432" border="0">
+<table width="auto" height="1379" border="0" align="center">
   <tbody>
     <tr>
-      <td height="410" colspan="3"><video width="1719" height="410" poster="未命名設計.gif" autoplay="autoplay" loop="loop" >
-        <source src="未命名設計" type="video/mp4">
-      </video></td>
-    </tr>
-    <td width="1752" height="50" colspan="4" align="center"><div class="menu">
-  <a href="index.html" class="link">
-    <span class="link-icon">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="192"
-        height="192"
-        fill="currentColor"
-        viewBox="0 0 256 256"
-      >
-        <rect width="256" height="256" fill="none"></rect>
-        <path
-          d="M213.3815,109.61945,133.376,36.88436a8,8,0,0,0-10.76339.00036l-79.9945,72.73477A8,8,0,0,0,40,115.53855V208a8,8,0,0,0,8,8H208a8,8,0,0,0,8-8V115.53887A8,8,0,0,0,213.3815,109.61945Z"
-          fill="none"
-          stroke="currentColor"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="16"
-        ></path>
-      </svg>
-    </span>
-    <span class="link-title">Home</span>
-  </a>
-  <a href="artists.html" class="link">
-    <span class="link-icon">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="192"
-        height="192"
-        fill="currentColor"
-        viewBox="0 0 256 256"
-      >
-        <rect width="256" height="256" fill="none"></rect>
-        <polyline
-          points="76.201 132.201 152.201 40.201 216 40 215.799 103.799 123.799 179.799"
-          fill="none"
-          stroke="currentColor"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="16"
-        ></polyline>
-        <line
-          x1="100"
-          y1="156"
-          x2="160"
-          y2="96"
-          fill="none"
-          stroke="currentColor"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="16"
-        ></line>
-        <path
-          d="M82.14214,197.45584,52.201,227.397a8,8,0,0,1-11.31371,0L28.603,215.11268a8,8,0,0,1,0-11.31371l29.94113-29.94112a8,8,0,0,0,0-11.31371L37.65685,141.65685a8,8,0,0,1,0-11.3137l12.6863-12.6863a8,8,0,0,1,11.3137,0l76.6863,76.6863a8,8,0,0,1,0,11.3137l-12.6863,12.6863a8,8,0,0,1-11.3137,0L93.45584,197.45584A8,8,0,0,0,82.14214,197.45584Z"
-          fill="none"
-          stroke="currentColor"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="16"
-        ></path>
-      </svg>
-    </span>
-    <span class="link-title">artists</span>
-  </a>
-  <a href="tickets.html" class="link">
-    <span class="link-icon">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="192"
-        height="192"
-        fill="currentColor"
-        viewBox="0 0 256 256"
-      >
-        <rect width="256" height="256" fill="none"></rect>
-        <path
-          d="M45.42853,176.99811A95.95978,95.95978,0,1,1,79.00228,210.5717l.00023-.001L45.84594,220.044a8,8,0,0,1-9.89-9.89l9.47331-33.15657Z"
-          fill="none"
-          stroke="currentColor"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="16"
-        ></path>
-        <line
-          x1="96"
-          y1="112"
-          x2="160"
-          y2="112"
-          fill="none"
-          stroke="currentColor"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="16"
-        ></line>
-        <line
-          x1="96"
-          y1="144"
-          x2="160"
-          y2="144"
-          fill="none"
-          stroke="currentColor"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="16"
-        ></line>
-      </svg>
-    </span>
-    <span class="link-title">ticket</span>
-  </a>
+              <td height="410" colspan="3">
+                <video
+                  width="1700"
+                  height="400"
+                  poster="未命名設計.gif"
+                  autoplay="autoplay"
+                  loop="loop"
+                >
+                  <source src="未命名設計" type="video/mp4" />
+                </video>
+              </td>
+            </tr>
+    <td width="1700" height="50" colspan="4" align="center">
+              <div class="menu">
+                <a href="index.html" class="link">
+                  <span class="link-icon">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="192"
+                      height="192"
+                      fill="currentColor"
+                      viewBox="0 0 256 256"
+                    >
+                      <rect width="256" height="256" fill="none"></rect>
+                      <path
+                        d="M213.3815,109.61945,133.376,36.88436a8,8,0,0,0-10.76339.00036l-79.9945,72.73477A8,8,0,0,0,40,115.53855V208a8,8,0,0,0,8,8H208a8,8,0,0,0,8-8V115.53887A8,8,0,0,0,213.3815,109.61945Z"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="16"
+                      ></path>
+                    </svg>
+                  </span>
+                  <span class="link-title">Home</span>
+                </a>
+                <a href="artists.html" class="link">
+                  <span class="link-icon">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="192"
+                      height="192"
+                      fill="currentColor"
+                      viewBox="0 0 256 256"
+                    >
+                      <rect width="256" height="256" fill="none"></rect>
+                      <polyline
+                        points="76.201 132.201 152.201 40.201 216 40 215.799 103.799 123.799 179.799"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="16"
+                      ></polyline>
+                      <line
+                        x1="100"
+                        y1="156"
+                        x2="160"
+                        y2="96"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="16"
+                      ></line>
+                      <path
+                        d="M82.14214,197.45584,52.201,227.397a8,8,0,0,1-11.31371,0L28.603,215.11268a8,8,0,0,1,0-11.31371l29.94113-29.94112a8,8,0,0,0,0-11.31371L37.65685,141.65685a8,8,0,0,1,0-11.3137l12.6863-12.6863a8,8,0,0,1,11.3137,0l76.6863,76.6863a8,8,0,0,1,0,11.3137l-12.6863,12.6863a8,8,0,0,1-11.3137,0L93.45584,197.45584A8,8,0,0,0,82.14214,197.45584Z"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="16"
+                      ></path>
+                    </svg>
+                  </span>
+                  <span class="link-title">artists</span>
+                </a>
+                <a href="tickets.html" class="link">
+                  <span class="link-icon">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="192"
+                      height="192"
+                      fill="currentColor"
+                      viewBox="0 0 256 256"
+                    >
+                      <rect width="256" height="256" fill="none"></rect>
+                      <path
+                        d="M45.42853,176.99811A95.95978,95.95978,0,1,1,79.00228,210.5717l.00023-.001L45.84594,220.044a8,8,0,0,1-9.89-9.89l9.47331-33.15657Z"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="16"
+                      ></path>
+                      <line
+                        x1="96"
+                        y1="112"
+                        x2="160"
+                        y2="112"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="16"
+                      ></line>
+                      <line
+                        x1="96"
+                        y1="144"
+                        x2="160"
+                        y2="144"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="16"
+                      ></line>
+                    </svg>
+                  </span>
+                  <span class="link-title">ticket</span>
+                </a>
 
-  <a href="tickets imformation.html" class="link">
-    <span class="link-icon">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="192"
-        height="192"
-        fill="currentColor"
-        viewBox="0 0 256 256"
-      >
-        <rect width="256" height="256" fill="none"></rect>
-        <circle
-          cx="116"
-          cy="116"
-          r="84"
-          fill="none"
-          stroke="currentColor"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="16"
-        ></circle>
-        <line
-          x1="175.39356"
-          y1="175.40039"
-          x2="223.99414"
-          y2="224.00098"
-          fill="none"
-          stroke="currentColor"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="16"
-        ></line>
-      </svg>
-    </span>
-    <span class="link-title">information</span>
-  </a>
-  <a href="contact.html" class="link">
-    <span class="link-icon">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="192"
-        height="192"
-        fill="currentColor"
-        viewBox="0 0 256 256"
-      >
-        <rect width="256" height="256" fill="none"></rect>
-        <circle
-          cx="128"
-          cy="96"
-          r="64"
-          fill="none"
-          stroke="currentColor"
-          stroke-miterlimit="10"
-          stroke-width="16"
-        ></circle>
-        <path
-          d="M30.989,215.99064a112.03731,112.03731,0,0,1,194.02311.002"
-          fill="none"
-          stroke="currentColor"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="16"
-        ></path>
-      </svg>
-    </span>
-    <span class="link-title">contacts</span>
-  </a>
-</div>
-</td>
+                <a href="tickets imformation.html" class="link">
+                  <span class="link-icon">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="192"
+                      height="192"
+                      fill="currentColor"
+                      viewBox="0 0 256 256"
+                    >
+                      <rect width="256" height="256" fill="none"></rect>
+                      <circle
+                        cx="116"
+                        cy="116"
+                        r="84"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="16"
+                      ></circle>
+                      <line
+                        x1="175.39356"
+                        y1="175.40039"
+                        x2="223.99414"
+                        y2="224.00098"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="16"
+                      ></line>
+                    </svg>
+                  </span>
+                  <span class="link-title">information</span>
+                </a>
+                <a href="contact.html" class="link">
+                  <span class="link-icon">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="192"
+                      height="192"
+                      fill="currentColor"
+                      viewBox="0 0 256 256"
+                    >
+                      <rect width="256" height="256" fill="none"></rect>
+                      <circle
+                        cx="128"
+                        cy="96"
+                        r="64"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-miterlimit="10"
+                        stroke-width="16"
+                      ></circle>
+                      <path
+                        d="M30.989,215.99064a112.03731,112.03731,0,0,1,194.02311.002"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="16"
+                      ></path>
+                    </svg>
+                  </span>
+                  <span class="link-title">contacts</span>
+                </a>
+              </div>
+            </td>
     <tr>
       <td height="50" colspan="3" valign="top"><h1 style="text-align: left">Ticket </h1></td>
     </tr>
@@ -771,7 +869,7 @@ h3 {
     .col-50 { flex: 50%; }
     .col-75 { flex: 75%; }
     .container {
-      background-color: #fff;
+      background-color: #fdfdfd6c;
       padding: 20px;
       border-radius: 10px;
       margin: auto;
@@ -831,12 +929,17 @@ h3 {
    /* From Uiverse.io by MrBishtji */
       #SocailIcons {
         min-width: 350px;
-        position: absolute;
-        bottom: -60%;
-        left: 50%;
-        transform: translate(-50%, -50%);
+        position: relative; /* 修正为相对定位，避免遮挡内容 */
+        margin: 30px auto 0 auto;
+        left: unset;
+        bottom: unset;
+        transform: none;
         display: flex;
-        justify-content: space-around;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        z-index: 1;
+        gap: 30px; /* 图标间距 */
       }
       .icons {
         width: 50px;
@@ -846,40 +949,43 @@ h3 {
         cursor: pointer;
         outline: none;
         border: none;
-        z-index: -1;
+        z-index: 1;
         text-align: center;
+        position: relative;
+        margin: 0 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
       }
       .iconName {
         position: absolute;
         top: -40px;
+        left: 50%;
+        transform: translateX(-50%) scale(0);
         font-size: 12px;
         color: #fff;
-        transform: scale(0);
         border-radius: 3px;
         text-align: center;
-        padding: 3px;
-        transition: transform 0.3s ease;
+        padding: 3px 8px;
+        background: #333;
+        transition: transform 0.3s ease, background 0.3s;
+        white-space: nowrap;
+        pointer-events: none;
+        z-index: 2;
       }
-
+      .icons:hover .iconName {
+        transform: translateX(-50%) scale(1);
+      }
       .icons.instaIcon:hover .iconName {
-        transform: scale(1);
-        left: 15px;
         background: linear-gradient(30deg, #0000ff, #f56040);
       }
-
       .icons.linkedin:hover .iconName {
-        transform: scale(1);
-        left: 106px;
         background: #0274b3;
       }
       .icons.whatsapp:hover .iconName {
-        transform: scale(1);
-        right: 100px;
         background: #25d366;
       }
       .icons.youtube:hover .iconName {
-        transform: scale(1);
-        right: 15px;
         background: #ff0000;
       }
       .icon {
@@ -898,6 +1004,7 @@ h3 {
       }
       .icon:hover {
         color: #fff;
+        box-shadow: 5px 5px 10px #181717ce;
       }
       .icon::before {
         content: "";
@@ -916,27 +1023,19 @@ h3 {
         height: 100%;
         z-index: 1;
       }
-      .icon:hover {
-        box-shadow: 5px 5px 10px #181717ce;
-      }
-
       .icon.tube::before {
-        z-index: -1;
         background: red;
       }
 
       .icon.insta::before {
-        z-index: -1;
         background: linear-gradient(40deg, #0000ff, #f56040);
       }
 
       .icon.link::before {
-        z-index: -1;
         background: #0274b3;
       }
 
       .icon.whats::before {
-        z-index: -1;
         background: #25d366;
       }
   </style>
@@ -1215,110 +1314,262 @@ h3 {
     </tr>
   </tbody>
 </table>
-<!-- From Uiverse.io by MrBishtji -->
-    <div id="SocailIcons">
-      <div class="icons instaIcon">
-        <p class="iconName">Instagram</p>
-        <div class="icon insta">
-          <svg
-            viewBox="0 0 24 24"
-            fill="none"
-            height=""
-            width="35"
-            xmlns="http://www.w3.org/2000/svg"
-            aria-hidden="true"
-            class="w-6 h-6 text-gray-800 dark:text-white"
-          >
-            <path
-              clip-rule="evenodd"
-              d="M3 8a5 5 0 0 1 5-5h8a5 5 0 0 1 5 5v8a5 5 0 0 1-5 5H8a5 5 0 0 1-5-5V8Zm5-3a3 3 0 0 0-3 3v8a3 3 0 0 0 3 3h8a3 3 0 0 0 3-3V8a3 3 0 0 0-3-3H8Zm7.597 2.214a1 1 0 0 1 1-1h.01a1 1 0 1 1 0 2h-.01a1 1 0 0 1-1-1ZM12 9a3 3 0 1 0 0 6 3 3 0 0 0 0-6Zm-5 3a5 5 0 1 1 10 0 5 5 0 0 1-10 0Z"
-              fill-rule="evenodd"
-              fill="currentColor"
-            ></path>
-          </svg>
-        </div>
-      </div>
-      <div class="icons linkedin">
-        <p class="iconName">Linkedin</p>
-        <div class="icon link">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="35"
-            height=""
-            viewBox="0 0 24 24"
-            style="fill: rgba(0, 0, 0, 1); transform: ; msfilter: "
-          >
-            <circle
-              cx="4.983"
-              cy="5.009"
-              r="2.188"
-              fill="currentColor"
-            ></circle>
-            <path
-              d="M9.237 8.855v12.139h3.769v-6.003c0-1.584.298-3.118 2.262-3.118 1.937 0 1.961 1.811 1.961 3.218v5.904H21v-6.657c0-3.27-.704-5.783-4.526-5.783-1.835 0-3.065 1.007-3.568 1.96h-.051v-1.66H9.237zm-6.142 0H6.87v12.139H3.095z"
-              fill="currentColor"
-            ></path>
-          </svg>
-        </div>
-      </div>
-      <div class="icons whatsapp">
-        <p class="iconName">WhatsApp</p>
-        <div class="icon whats">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="35"
-            height=""
-            viewBox="0 0 24 24"
-            style="fill: rgba(0, 0, 0, 1); transform: ; msfilter: "
-          >
-            <path
-              fill-rule="evenodd"
-              clip-rule="evenodd"
-              d="M18.403 5.633A8.919 8.919 0 0 0 12.053 3c-4.948 0-8.976 4.027-8.978 8.977 0 1.582.413 3.126 1.198 4.488L3 21.116l4.759-1.249a8.981 8.981 0 0 0 4.29 1.093h.004c4.947 0 8.975-4.027 8.977-8.977a8.926 8.926 0 0 0-2.627-6.35m-6.35 13.812h-.003a7.446 7.446 0 0 1-3.798-1.041l-.272-.162-2.824.741.753-2.753-.177-.282a7.448 7.448 0 0 1-1.141-3.971c.002-4.114 3.349-7.461 7.465-7.461a7.413 7.413 0 0 1 5.275 2.188 7.42 7.42 0 0 1 2.183 5.279c-.002 4.114-3.349 7.462-7.461 7.462m4.093-5.589c-.225-.113-1.327-.655-1.533-.73-.205-.075-.354-.112-.504.112s-.58.729-.711.879-.262.168-.486.056-.947-.349-1.804-1.113c-.667-.595-1.117-1.329-1.248-1.554s-.014-.346.099-.458c.101-.1.224-.262.336-.393.112-.131.149-.224.224-.374s.038-.281-.019-.393c-.056-.113-.505-1.217-.692-1.666-.181-.435-.366-.377-.504-.383a9.65 9.65 0 0 0-.429-.008.826.826 0 0 0-.599.28c-.206.225-.785.767-.785 1.871s.804 2.171.916 2.321c.112.15 1.582 2.415 3.832 3.387.536.231.954.369 1.279.473.537.171 1.026.146 1.413.089.431-.064 1.327-.542 1.514-1.066.187-.524.187-.973.131-1.067-.056-.094-.207-.151-.43-.263"
-              fill="currentColor"
-            ></path>
-          </svg>
-        </div>
-      </div>
-      <div class="icons youtube">
-        <p class="iconName">YouTube</p>
-        <div class="icon tube">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="35"
-            height=""
-            viewBox="0 0 24 24"
-            style="fill: rgba(0, 0, 0, 1); transform: ; msfilter: "
-          >
-            <path
-              d="M21.593 7.203a2.506 2.506 0 0 0-1.762-1.766C18.265 5.007 12 5 12 5s-6.264-.007-7.831.404a2.56 2.56 0 0 0-1.766 1.778c-.413 1.566-.417 4.814-.417 4.814s-.004 3.264.406 4.814c.23.857.905 1.534 1.763 1.765 1.582.43 7.83.437 7.83.437s6.265.007 7.831-.403a2.515 2.515 0 0 0 1.767-1.763c.414-1.565.417-4.812.417-4.812s.02-3.265-.407-4.831zM9.996 15.005l.005-6 5.207 3.005-5.212 2.995z"
-              fill="currentColor"
-            ></path>
-          </svg>
-        </div>
-      </div>
-    </div>
-<!-- Footer -->
-  <footer>
-    <h4>© 2025 Live in the Park LTP. All rights reserved.</h4>
-    <h4>This work is protected by copyright law. No part may be reproduced, distributed, or modified without permission.</h4>
-    <button class="button">
-  <svg class="svgIcon" viewBox="0 0 384 512">
-    <path
-      d="M214.6 41.4c-12.5-12.5-32.8-12.5-45.3 0l-160 160c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 141.2V448c0 17.7 14.3 32 32 32s32-14.3 32-32V141.2L329.4 246.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-160-160z"
-    ></path>
-  </svg>
-</button>
-    <script>
-      const button = document.querySelector(".button");
-      button.addEventListener("click", () => {
-        window.scrollTo({
-          top: 1,
-          behavior: "smooth",
-        });
-      });
-    </script> 
-  </footer>
+<tr>
+              <td height="363">&nbsp;</td>
+              <td width="615" valign="top">
+                <div class="container">
+                  <h2><p style="text-align: center">Follow Us</p></h2>
+                  <!-- From Uiverse.io by MrBishtji -->
+                  <!-- 修复 LinkedIn 图标链接，原 WhatsApp 链接拼写也一并修正 -->
+                  <div id="SocailIcons">
+                    <div class="icons instaIcon">
+                      <p class="iconName">Instagram</p>
+                      <a
+                        href="https://www.instagram.com/"
+                        target="_blank"
+                        class="icon insta"
+                      >
+                        <svg
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          width="35"
+                          xmlns="http://www.w3.org/2000/svg"
+                          aria-hidden="true"
+                          class="w-6 h-6 text-gray-800 dark:text-white"
+                        >
+                          <path
+                            clip-rule="evenodd"
+                            d="M3 8a5 5 0 0 1 5-5h8a5 5 0 0 1 5 5v8a5 5 0 0 1-5 5H8a5 5 0 0 1-5-5V8Zm5-3a3 3 0 0 0-3 3v8a3 3 0 0 0 3 3h8a3 3 0 0 0 3-3V8a3 3 0 0 0-3-3H8Zm7.597 2.214a1 1 0 0 1 1-1h.01a1 1 0 1 1 0 2h-.01a1 1 0 0 1-1-1ZM12 9a3 3 0 1 0 0 6 3 3 0 0 0 0-6Zm-5 3a5 5 0 1 1 10 0 5 5 0 0 1-10 0Z"
+                            fill-rule="evenodd"
+                            fill="currentColor"
+                          ></path>
+                        </svg>
+                      </a>
+                    </div>
+                    <div class="icons linkedin">
+                      <p class="iconName">LinkedIn</p>
+                      <a
+                        href="https://www.linkedin.com/"
+                        target="_blank"
+                        class="icon link"
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="35"
+                          viewBox="0 0 24 24"
+                          style="fill: rgba(0, 0, 0, 1)"
+                        >
+                          <circle
+                            cx="4.983"
+                            cy="5.009"
+                            r="2.188"
+                            fill="currentColor"
+                          ></circle>
+                          <path
+                            d="M9.237 8.855v12.139h3.769v-6.003c0-1.584.298-3.118 2.262-3.118 1.937 0 1.961 1.811 1.961 3.218v5.904H21v-6.657c0-3.27-.704-5.783-4.526-5.783-1.835 0-3.065 1.007-3.568 1.96h-.051v-1.66H9.237zm-6.142 0H6.87v12.139H3.095z"
+                            fill="currentColor"
+                          ></path>
+                        </svg>
+                      </a>
+                    </div>
+                    <div class="icons whatsapp">
+                      <p class="iconName">WhatsApp</p>
+                      <a
+                        href="https://www.whatsapp.com/"
+                        target="_blank"
+                        class="icon whats"
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="35"
+                          viewBox="0 0 24 24"
+                          style="fill: rgba(0, 0, 0, 1)"
+                        >
+                          <path
+                            fill-rule="evenodd"
+                            clip-rule="evenodd"
+                            d="M18.403 5.633A8.919 8.919 0 0 0 12.053 3c-4.948 0-8.976 4.027-8.978 8.977 0 1.582.413 3.126 1.198 4.488L3 21.116l4.759-1.249a8.981 8.981 0 0 0 4.29 1.093h.004c4.947 0 8.975-4.027 8.977-8.977a8.926 8.926 0 0 0-2.627-6.35m-6.35 13.812h-.003a7.446 7.446 0 0 1-3.798-1.041l-.272-.162-2.824.741.753-2.753-.177-.282a7.448 7.448 0 0 1-1.141-3.971c.002-4.114 3.349-7.461 7.465-7.461a7.413 7.413 0 0 1 5.275 2.188 7.42 7.42 0 0 1 2.183 5.279c-.002 4.114-3.349 7.462-7.461 7.462m4.093-5.589c-.225-.113-1.327-.655-1.533-.73-.205-.075-.354-.112-.504.112s-.58.729-.711.879-.262.168-.486.056-.947-.349-1.804-1.113c-.667-.595-1.117-1.329-1.248-1.554s-.014-.346.099-.458c.101-.1.224-.262.336-.393.112-.131.149-.224.224-.374s.038-.281-.019-.393c-.056-.113-.505-1.217-.692-1.666-.181-.435-.366-.377-.504-.383a9.65 9.65 0 0 0-.429-.008.826.826 0 0 0-.599.28c-.206.225-.785.767-.785 1.871s.804 2.171.916 2.321c.112.15 1.582 2.415 3.832 3.387.536.231.954.369 1.279.473.537.171 1.026.146 1.413.089.431-.064 1.327-.542 1.514-1.066.187-.524.187-.973.131-1.067-.056-.094-.207-.151-.43-.263"
+                            fill="currentColor"
+                          ></path>
+                        </svg>
+                      </a>
+                    </div>
+                    <div class="icons youtube">
+                      <p class="iconName">YouTube</p>
+                      <a
+                        href="https://www.youtube.com/"
+                        target="_blank"
+                        class="icon tube"
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="35"
+                          viewBox="0 0 24 24"
+                          style="fill: rgba(0, 0, 0, 1)"
+                        >
+                          <path
+                            d="M21.593 7.203a2.506 2.506 0 0 0-1.762-1.766C18.265 5.007 12 5 12 5s-6.264-.007-7.831.404a2.56 2.56 0 0 0-1.766 1.778c-.413 1.566-.417 4.814-.417 4.814s-.004 3.264.406 4.814c.23.857.905 1.534 1.763 1.765 1.582.43 7.83.437 7.83.437s6.265.007 7.831-.403a2.515 2.515 0 0 0 1.767-1.763c.414-1.565.417-4.812.417-4.812s.02-3.265-.407-4.831zM9.996 15.005l.005-6 5.207 3.005-5.212 2.995z"
+                            fill="currentColor"
+                          ></path>
+                        </svg>
+                      </a>
+                    </div>
+                  </div>
+                  <h2>
+                    <p style="text-align: center">
+                      Stay updated with our latest news and events.
+                    </p>
+                  </h2>
+                  <style>
+                    /* From Uiverse.io by MrBishtji */
+                    #SocailIcons {
+                      min-width: 350px;
+                      position: relative;
+                      margin: 30px auto 0 auto;
+                      left: unset;
+                      bottom: unset;
+                      transform: none;
+                      display: flex;
+                      justify-content: center;
+                      align-items: center;
+                      flex-wrap: wrap;
+                      z-index: 1;
+                      gap: 30px; /* 图标间距 */
+                    }
+                    .icons {
+                      width: 50px;
+                      height: 50px;
+                      background: #fff;
+                      border-radius: 50%;
+                      cursor: pointer;
+                      outline: none;
+                      border: none;
+                      z-index: 1;
+                      text-align: center;
+                      position: relative;
+                      margin: 0 10px;
+                      display: flex;
+                      align-items: center;
+                      justify-content: center;
+                    }
+                    .iconName {
+                      position: absolute;
+                      top: -40px;
+                      left: 50%;
+                      transform: translateX(-50%) scale(0);
+                      font-size: 12px;
+                      color: #fff;
+                      border-radius: 3px;
+                      text-align: center;
+                      padding: 3px 8px;
+                      background: #333;
+                      transition: transform 0.3s ease, background 0.3s;
+                      white-space: nowrap;
+                      pointer-events: none;
+                      z-index: 2;
+                    }
+                    .icons:hover .iconName {
+                      transform: translateX(-50%) scale(1);
+                    }
+                    .icons.instaIcon:hover .iconName {
+                      background: linear-gradient(30deg, #0000ff, #f56040);
+                    }
+                    .icons.linkedin:hover .iconName {
+                      background: #0274b3;
+                    }
+                    .icons.whatsapp:hover .iconName {
+                      background: #25d366;
+                    }
+                    .icons.youtube:hover .iconName {
+                      background: #ff0000;
+                    }
+                    .icon {
+                      z-index: 1;
+                      display: inline-block;
+                      width: 100%;
+                      height: 100%;
+                      text-align: center;
+                      border-radius: 50%;
+                      position: relative;
+                      overflow: hidden;
+                      border: none;
+                      outline: none;
+                      transition: color 0.3s ease;
+                      color: #0c0c0c;
+                    }
+                    .icon:hover {
+                      color: #fff;
+                      box-shadow: 5px 5px 10px #181717ce;
+                    }
+                    .icon::before {
+                      content: "";
+                      position: absolute;
+                      bottom: 0;
+                      left: 0;
+                      width: 100%;
+                      height: 0;
+                      border-radius: 50%;
+                      transform: rotateX(360deg);
+                      transition: height 0.3s ease;
+                      z-index: -1;
+                    }
 
+                    .icon:hover::before {
+                      height: 100%;
+                      z-index: 1;
+                    }
+                    .icon.tube::before {
+                      background: red;
+                    }
+
+                    .icon.insta::before {
+                      background: linear-gradient(40deg, #0000ff, #f56040);
+                    }
+
+                    .icon.link::before {
+                      background: #0274b3;
+                    }
+
+                    .icon.whats::before {
+                      background: #25d366;
+                    }
+                    h2 {
+                      font-size: 20 px;
+                      color: #a421fc;
+                    }
+                  </style>
+                </div>
+                <h2>&nbsp;</h2>
+                <h2>&nbsp;</h2>
+                <h2>&nbsp;</h2>
+                <p id="#top">&nbsp;</p>
+              </td>
+<footer>
+          <img src="live in.png" width="200" height="200" align="left" />
+          <h4>© 2025 Live in the Park LTP. All rights reserved.</h4>
+          <h4>
+            This work is protected by copyright law. No part may be reproduced,
+            distributed, or modified without permission.
+          </h4>
+          <p>&nbsp;</p>
+          <p>&nbsp;</p>
+
+          <button class="button"> 
+            <svg class="svgIcon" viewBox="0 0 384 512">
+              <path
+                d="M214.6 41.4c-12.5-12.5-32.8-12.5-45.3 0l-160 160c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 141.2V448c0 17.7 14.3 32 32 32s32-14.3 32-32V141.2L329.4 246.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-160-160z"
+              ></path>
+            </svg>
+          </button>
+          <script>
+            const button = document.querySelector(".button");
+            button.addEventListener("click", () => {
+              window.scrollTo({
+                top: 0,
+                behavior: "smooth",
+              });
+            });
+          </script>
+        </footer>
 </body>
 </html>
